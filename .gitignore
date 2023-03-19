@@ -1,0 +1,8 @@
+# node.js
+node_modules/
+
+# Visual Studio Code
+.vscode/
+
+# Obsidian
+.obsidian/
