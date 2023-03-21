@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+//Import minimist and console out the arguments
+const minimist = require('minimist');
+const args = minimist(process.argv.slice(2));
+console.log(args);
+
+
+// Class to handle operations from the first CLI argument (e.g. save, delete)
+class Conjurer {
+    
+    // Array to store the commands
+    commands = [];
+
+
+    
+    constructor() {
+
+    }
+    
+    // Method to read the first CLI argument and call the appropriate method
+    queueCommand(operation, operators, options){
+        // Create a new command object and add it to the commands array
+        let command = new Command(operation, operators, options);
+        this.commands.push(
+            new Command(
+                operation, 
+                operators, 
+                options
+            )
+        );
+    }
+
+    apply() {
+        // Loop through the commands array and apply each command
+
+        try {
+            this.commands.forEach(command => {
+                this[command.operation](command.operators, command.options);
+            });
+        }catch(error) {
+            console.error(error);
+        }
+
+    }
+}
+
+class Command {
+    constructor({operation, operators, options} = {}) {
+        this.operation = operation;
+        this.operators = operators;
+        this.options = options;
+    }
+
+    
+}
+
+module.exports = Conjurer;
