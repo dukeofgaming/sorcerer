@@ -1,0 +1,12 @@
+$schema: http://stsci.edu/schemas/yaml-schema/draft-01
+type: object
+title: EntityItem
+properties:
+  uuid:
+    type: string
+  entity_uuid:
+    type: string
+additionalProperties: false
+required:
+  - uuid
+  - entity_uuid
